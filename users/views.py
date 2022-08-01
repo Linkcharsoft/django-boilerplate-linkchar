@@ -42,24 +42,6 @@ class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
 
 
-class RegisterView(RegisterView):
-    def create(self, request, *args, **kwargs):
-        if not 'first_name' in request.data:
-            return Response({'error': _('First name is required')}, status=status.HTTP_400_BAD_REQUEST)
-        if not 'last_name' in request.data:
-            return Response({'error': _('Last name is required')}, status=status.HTTP_400_BAD_REQUEST)
-
-        response = super().create(request, *args, **kwargs)
-        if response.status_code == status.HTTP_201_CREATED:
-            first_name = request.data.get('first_name', '')
-            last_name = request.data.get('last_name', '')
-            user = User.objects.get(email=request.data.get('email'))
-            user.first_name = first_name
-            user.last_name = last_name
-            user.save()
-        return response
-
-
 class EmailVerification(APIView, ConfirmEmailView):
     
     def get(self, request, key):
@@ -95,7 +77,7 @@ class Password_recovery_email_send(APIView):
             Thank you,\n " + YOUR_APP_NAME + " Team"
             send_mail(
                 # title:
-                "Password Reset for {title}".format(title="Pouchegg"),
+                "Password Reset for {title}".format(title="YOUR_APP_NAME"),
                 # message:
                 email_plaintext_message,
                 # from:
