@@ -1,10 +1,9 @@
 from django.urls import path
 
-from users.views import Password_recovery_email_send, Check_token, Password_recovery_confirm, \
-    User_profile_me
+from users.register_views import Password_recovery_email_send, Check_token, Password_recovery_confirm, FacebookLogin, GoogleLogin
 from dj_rest_auth.views import PasswordChangeView
 
-from users.views import FacebookLogin, GoogleLogin
+from users.views import User_profile_me
 
 
 urlpatterns = [

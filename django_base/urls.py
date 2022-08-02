@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
-from users.views import EmailVerification
+from users.register_views import EmailVerification
 from dj_rest_auth.registration.views import ResendEmailVerificationView, RegisterView
 from dj_rest_auth.views import LoginView, LogoutView
 from django.conf import settings

@@ -87,7 +87,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -249,5 +248,5 @@ JWT_SECRET = SECRET_KEY  # use settings secret key for JWT secret
 JWT_ALGORITHM = 'HS256'
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-        'REGISTER_SERIALIZER': 'users.serializers.RegisterSerializer',
+        'REGISTER_SERIALIZER': 'users.register_serializers.RegisterSerializer',
 }
