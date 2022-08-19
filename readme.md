@@ -7,7 +7,7 @@ Pre-config Django with django-rest-framework, user-profile model and autenticati
 Use the git clone command:
 
 ```bash
-git clone https://github.com/quiromaniaco/django-boilerplate-linkchar.git
+git clone https://github.com/Linkcharsoft/django-boilerplate-linkchar
 cd Django_base
 ```
 

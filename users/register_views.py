@@ -6,7 +6,7 @@ from rest_framework import status
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.account.views import ConfirmEmailView
-from rest_auth.registration.views import SocialLoginView
+from dj_rest_auth.registration.views import SocialLoginView
 from dj_rest_auth.registration.serializers import VerifyEmailSerializer
 from allauth.account.models import EmailAddress
 
@@ -29,8 +29,8 @@ from users.utils import get_random_string
 def create_profile(sender, instance, **kwargs):
     if kwargs['created']:
         User_profile.objects.create(user=instance)
-    if instance.is_staff:
-        EmailAddress.objects.create(user=instance, email=instance.email, verified=True, primary=True)
+        if instance.is_staff:
+            EmailAddress.objects.create(user=instance, email=instance.email, verified=True, primary=True)
 
 
 class FacebookLogin(SocialLoginView):
