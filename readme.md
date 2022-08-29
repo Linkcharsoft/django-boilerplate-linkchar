@@ -1,6 +1,6 @@
 # General information
 
-Pre-config Django with django-rest-framework, user-profile model and autentication process (Login, Signup, Password reset, password, recovery...)
+Pre-config Django with django-rest-framework,corsheaders, user-profile model and autentication process (Login, Signup, Password reset, password, recovery...)
  
 ## Installation
 
@@ -55,6 +55,7 @@ python manage.py migrate
 ## Contributing
 - [Juan Ignacio Borrelli](https://www.linkedin.com/in/juan-ignacio-borrelli/)
 - [Luca Cittá Guiordano](https://www.linkedin.com/in/lucacittagiordano/)
+- [Matias Girardi](https://www.linkedin.com/in/matiasgirardi)
 
 Both working on [Linkchar Software Development](https://linkchar.com/)
 
