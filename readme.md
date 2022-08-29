@@ -8,10 +8,16 @@ Use the git clone command:
 
 ```bash
 git clone https://github.com/Linkcharsoft/django-boilerplate-linkchar
-cd Django_base
+cd django_base
 ```
 
-It is highly recommended to use a [VirtualEnv](https://towardsdatascience.com/virtual-environments-104c62d48c54):
+It is highly recommended to use a [VirtualEnv](https://towardsdatascience.com/virtual-environments-104c62d48c54)
+
+Create and complete a .env file with your app info (there is already a .env.example file).
+In order to complete the "SECRET_KEY" field, you can use the default on .env.example but then you must run the following command and copy the given value on the .env file:
+```bash
+python manage.py get_secret_key
+```
 
 ```bash
 pip install -r requirements.txt
@@ -19,11 +25,6 @@ python manage.py migrate
 ```
 
 ### Other configurations
-- Create and complete a .env file with your app info (there is already a .env.example file).
-In order to complete the "SECRET_KEY" field, you can run the following command and copy the value on the .env file:
-```bash
-python manage.py get_secret_key
-```
 
 - On django admin site, on "sites" section, change "example.com" to your domain name (something like "google.com").
 
