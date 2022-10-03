@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class RegisterSerializer(serializers.Serializer):
     email = serializers.EmailField(required=allauth_settings.EMAIL_REQUIRED)
+    username = serializers.CharField(required=True, write_only=True)
     first_name = serializers.CharField(required=True, write_only=True)
     last_name = serializers.CharField(required=True, write_only=True)
     password1 = serializers.CharField(required=True, write_only=True)
@@ -32,10 +33,11 @@ class RegisterSerializer(serializers.Serializer):
 
     def get_cleaned_data(self):
         return {
+            'email': self.validated_data.get('email', ''),
+            'username': self.validated_data.get('username', ''),
+            'password1': self.validated_data.get('password1', ''),
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
-            'password1': self.validated_data.get('password1', ''),
-            'email': self.validated_data.get('email', ''),
         }
 
     def save(self, request):
