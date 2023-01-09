@@ -31,6 +31,10 @@ YOUR_APP_NAME=env('YOUR_APP_NAME')
 
 IS_SERVER = env.bool('IS_SERVER', default=False)
 
+USE_AWS_SES = env.bool('USE_AWS_SES')
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -202,19 +206,21 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 
 #<------------Email------------>
-# For console output
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST_USER=""
+if IS_SERVER:
+    if USE_AWS_SES:
+        EMAIL_BACKEND = 'django_ses.SESBackend'
+    else:
+        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# For SMTP
-
-# EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST=env('EMAIL_HOST')
-# EMAIL_USE_TLS=env('EMAIL_USE_TLS')
-# EMAIL_PORT=env('EMAIL_PORT')
-# EMAIL_HOST_USER=env('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST=env('EMAIL_HOST')
+EMAIL_USE_TLS=env('EMAIL_USE_TLS')
+EMAIL_PORT=env('EMAIL_PORT')
+EMAIL_HOST_USER=env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_TLS=True
 #<------------Email------------>
 
 
